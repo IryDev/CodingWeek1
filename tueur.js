@@ -78,7 +78,6 @@ while (!jason.isDead && survivors.some((survivor) => !survivor.isDead)) {
     } )
     let randomNumber = Math.floor(Math.random() * aliveSurvivors.length);
     const targetSurvivor = aliveSurvivors[randomNumber]
-    //const targetSurvivor = survivors.find((survivor) => !survivor.isDead);
     const message = jason.attack(targetSurvivor);
     console.log(message);
 }
