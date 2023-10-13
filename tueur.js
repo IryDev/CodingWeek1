@@ -94,10 +94,3 @@ if (jason.isDead) {
 } else {
     console.log("Jason a tué tout les survivants.");
 }
-
-
-let bonjour = {
-    name: "bonjour",
-    age: [1,2,3,4,5,6,7,8,9,10],
-
-}
