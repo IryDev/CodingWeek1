@@ -1,21 +1,3 @@
-/*
-Créer une classque Pokemon avec comme paramètres : name, attack, defense, defense, pp, luck une fonction isLucky et une fonction AttackPokemon
-
-Créer deux instances de Pokémon avec des stats différentes
-Tant que l'un des deux pokémons n'est pas mort :
-le premier attaques le second (isLucky + AttackPokemon)
-afficher la cie et les dégats endommagés du premier
-afficher un message de mort pour le pokemon perdant
-
-Attention la formule des dégâts est la suivante :
-dégâts= att de l'attaque - def du défenseur
-
-la luck correspond à la probabilité de toucher l'ennemi (précision e pourcentage)
-générer un nombre aléatoire avec Math.random() qui retourne un décimal entre 0 et 1
-
-Si ce nombre est inférieur à la luck, l'attaque touche et les dégâts sont appliquész
-*/
-
 class Pokemon {
   constructor(name, hp, attack, defense, luck) {
     this.name = name;
