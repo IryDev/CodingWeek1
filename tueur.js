@@ -1,23 +1,22 @@
 class Character {
-    constructor(name, characteristic) {
+    constructor(name, charac) {
         this.name = name;
-        this.characteristic = characteristic;
-        this.isDead = false;
+        this.charac = charac
     }
 }
 
 class Survivor extends Character {
-    constructor(name, characteristic, probDeath, probInflictDamage) {
-        super(name, characteristic);
+    constructor(name, charac, probDeath, probInflictDamage) {
+        super(name, charac);
         this.probDeath = probDeath;
         this.probInflictDamage = probInflictDamage;
-        this.probInflictDamageAndDie = probDeath + probInflictDamage;
+        this.probInflictDamageAndDie = probDeath + (probInflictDamage * (1 - probDeath));
     }
 }
 
 class Killer extends Character {
-    constructor(name, characteristic) {
-        super(name, characteristic);
+    constructor(name, charac) {
+        super(name, charac);
         this.lifePoints = 100;
     }
 
@@ -27,13 +26,13 @@ class Killer extends Character {
         if (random < target.probDeath) {
             target.isDead = true;
             return `${target.name} est mort.`;
-        } else if (random < target.probInflictDamage) {
-            this.getDamage(10);
-            return `${target.name} a esquivé et a infligé 10 points de dégâts à ${this.name}.`;
-        } else if (random < target.probInflictDamageAndDie){
+        } else if (random < target.probInflictDamageAndDie) {
             this.getDamage(15);
             target.isDead = true;
-            return `${target.name}, a infligé 15 points de dégats au tueur, mais est mort`;
+            return `${target.name} a infligé 15 points de dégâts à ${this.name}, mais est mort.`;
+        } else {
+            this.getDamage(10);
+            return `${target.name} a esquivé et a infligé 10 points de dégâts à ${this.name}.`;
         }
     }
 
@@ -65,6 +64,8 @@ const jason = new Killer("Jason", "tueur en série");
 const namesSurvivor = ["Sannah", "John", "Robert", "Lily", "William", "Alex", "Zack", "Bryan"];
 const characSurvivor = ["Nerd", "Sportif", "Blonde", "Artiste", "Scientifique", "Chasseur", "Le noir"];
 
+
+
 const survivors = createSurvivors(namesSurvivor, characSurvivor);
 
 
@@ -93,3 +94,5 @@ if (jason.isDead) {
 } else {
     console.log("Jason a tué tout les survivants.");
 }
+
+
