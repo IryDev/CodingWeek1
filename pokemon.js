@@ -5,7 +5,7 @@ class Pokemon {
         this.attack = attack;
         this.defense = defense;
         this.luck = luck;
-        this.isDead = false;
+        this.isDead = this.hp <= 0;
     }
 
     isLucky() {
@@ -23,12 +23,10 @@ class Pokemon {
                 `${this.name} a attaqué ${target.name} mais a raté son attaque !`
             );
         }
-
     }
 
     getDamage(damage) {
         this.hp -= damage;
-        this.isDead = this.hp <= 0;
     }
 }
 
@@ -38,9 +36,7 @@ blastoise = new Pokemon("Blastoise", 130, 35, 20, 0.3);
 while (!charizard.isDead && !blastoise.isDead) {
     if (!charizard.isDead) {
         charizard.attackPokemon(blastoise);
-    }
-
-    if (!blastoise.isDead) {
+    } else if (!blastoise.isDead) {
         blastoise.attackPokemon(charizard);
     }
 }
